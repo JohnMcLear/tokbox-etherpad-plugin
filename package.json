@@ -1,7 +1,7 @@
 {
   "name": "ep_tokbox",
   "description": "Video conferencing and video chat in your Etherpad Lite pads powered by tokbox -- IMPORTANT: Add the following to your settings.json file -- 'ep_tokbox':{'key':'YOUR TOKBOX KEY HERE','onByDefault':'false'}",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "author": {
     "name": "johnyma22",
     "email": "john@mclear.co.uk",
@@ -12,7 +12,7 @@
   "engines": {
     "node": "*"
   },
-  "_id": "ep_tokbox@0.0.5",
+  "_id": "ep_tokbox@0.1.1",
   "readme": "ERROR: No README.md file found!",
   "dist": {
     "shasum": "927231aee0f19afa7a80fbfff8348401f15b0595"
