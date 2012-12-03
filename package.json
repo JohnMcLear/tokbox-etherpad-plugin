@@ -1,0 +1,21 @@
+{
+  "name": "ep_tokbox",
+  "description": "Video conferencing and video chat in your Etherpad Lite pads powered by tokbox",
+  "version": "0.0.4",
+  "author": {
+    "name": "johnyma22",
+    "email": "john@mclear.co.uk",
+    "url": "John McLear"
+  },
+  "contributors": [],
+  "dependencies": {},
+  "engines": {
+    "node": "*"
+  },
+  "_id": "ep_tokbox@0.0.5",
+  "readme": "ERROR: No README.md file found!",
+  "dist": {
+    "shasum": "927231aee0f19afa7a80fbfff8348401f15b0595"
+  },
+  "_from": "ep_tokbox"
+}
