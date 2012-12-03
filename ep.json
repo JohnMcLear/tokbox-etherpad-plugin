@@ -1,10 +1,9 @@
 {
   "parts":[
     {
-      "name": "tokBox",
-      "hooks": {},
-      "client_hooks": {
-        "postAceInit": "ep_tokbox/static/js/tokbox:postAceInit"
+      "name": "tokbox",
+      "hooks": {
+        "eejsBlock_scripts": "ep_tokbox/tokbox"
       }
     }
   ]
