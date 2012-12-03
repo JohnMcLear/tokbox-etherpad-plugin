@@ -2,8 +2,12 @@
   "parts":[
     {
       "name": "tokbox",
+      "client_hooks": {
+        "postAceInit": "ep_tokbox/static/js/tokbox"
+      },
       "hooks": {
-        "eejsBlock_scripts": "ep_tokbox/tokbox"
+        "eejsBlock_scripts": "ep_tokbox/tokbox",
+        "eejsBlock_editbarMenuRight": "ep_tokbox/tokbox"
       }
     }
   ]
