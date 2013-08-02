@@ -12,6 +12,10 @@
   "engines": {
     "node": "*"
   },
+  "repository" : {
+    "type" : "git",
+    "url"  : "https://github.com/JohnMcLear/tokbox-etherpad-plugin.git"
+  },
   "_id": "ep_tokbox@0.1.1",
   "readme": "ERROR: No README.md file found!",
   "dist": {
