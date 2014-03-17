@@ -1,9 +1,5 @@
-tokbox-etherpad-plugin
+I'm not actively maintaining this plugin
 ======================
 
-Video conferencing from Tokbox in Etherpad
+If you want Video conferencing in Etherpad grab the ep_webrtc plugin.
 
-todo
-====
-
-1. Make it so that each Video Chat is unique to each Pad.
