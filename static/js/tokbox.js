@@ -1,4 +1,23 @@
 var postAceInit = function(hook, context){
+  var top = $('div#editbar').offset().top + $('div#editbar').height() + 5;
+  $('<div>').attr({'id': 'tokbox'}).css({
+    'position': 'absolute',
+    'bottom': '0',
+    'left': '0',
+    'top': top + 'px',
+    'width': '130px',
+    'z-index': '1',
+    'border-right': '1px solid #999',
+    'border-top': '1px solid #999',
+    'padding': '3px',
+    'padding-bottom': '10px',
+    'background-color': '#f1f1f1',
+    'height': 'auto',
+    'border': 'none',
+    'border-right': '1px solid #ccc',
+    'display': 'none',
+  }).appendTo($('body'));
+
   if(clientVars.ep_tokbox){
     var tokBox = clientVars.ep_tokbox;
     if(tokBox && tokBox.key){ // Setup testing else poop out
@@ -11,39 +30,44 @@ var postAceInit = function(hook, context){
       alert('Tokbox key not set...  Set the key in your settings.json file');
     }
   }
+
+  if(avInURL()) showTokBox();
+
 }
 
 function enableTokBox(key){
-  $("#chatbox").prepend("<div id=tokbox><iframe id='videoEmbed' src='http://api.opentok.com/hl/embed/"+key+"' width='350' height='265' style='border:none' frameborder='0'></iframe></div>");
+
 }
 
 function showTokBox(){
+  $('#tokboxButton > a').css({"border-color":"red"});
   enableTokBox(clientVars.ep_tokbox.key);
-  $("#editorcontainer").css({"right":"357px","width":"auto"});
-  $("#tokbox").css({"z-index":"999999", "position":"absolute", "top":"0px"});
-  $("#chatbox").attr("style", "width: 350px !important");
-  $("#chatbox").addClass("stickyChat");
-  $("#chatbox").show();
-  $(".authorColors").attr("style", "top: 270px !important");
-  var optPar = $("#options-stickychat").parent();
-  optPar.hide();
-  $("#videoEmbed").show();
+  $("#tokbox").show();
+  var right = $('#editorcontainer').css('right');
+  right = right == 'auto' ? '0px' : right;
+  $('#editorcontainer').css({"left":"130px", "width": "auto", "right": right});
 }
 
 function hideTokBox(){
-  $("#editorcontainer").css({"right":"0px","width":"auto"});
-  $("#videoEmbed").remove();
-  $(".authorColors").attr("style", "top: 270px !important");
-  $("#chatbox").attr("style", "width: 200px !important");
-  $("#chatbox").removeClass("stickyChat");
-  $("#chatbox").hide();
+  $("#tokbox").hide();
+  $('#tokboxButton > a').css({"border-color":"#CCC"});
+  $('#editorcontainer').css({"left":"0"});
 }
 
 function toggleTokBox(){
-  if($("#videoEmbed").is(":visible")){
+  if($("#tokbox").is(":visible")){
+    console.log("hiding tokbox");
     hideTokBox();
   }else{
     showTokBox();
+  }
+}
+
+function avInURL(){
+  if (window.location.search.indexOf('av=YES') > -1) {
+    return true;
+  } else {
+    return false;
   }
 }
 
