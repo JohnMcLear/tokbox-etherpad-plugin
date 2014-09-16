@@ -7,6 +7,7 @@
       },
       "hooks": {
         "eejsBlock_scripts": "ep_tokbox/tokbox",
+	"clientVars":"ep_tokbox/tokbox:clientVars",
         "eejsBlock_editbarMenuRight": "ep_tokbox/tokbox"
       }
     }

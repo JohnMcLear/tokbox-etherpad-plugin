@@ -1,12 +1,15 @@
 var postAceInit = function(hook, context){
-  if(tokBox && tokBox.key){ // Setup testing else poop out
-    if(tokBox.onByDefault === true){
-      enableTokBox(tokBox.key);
-      showTokBox();
+  if(clientVars.ep_tokbox){
+    var tokBox = clientVars.ep_tokbox;
+    if(tokBox && tokBox.key){ // Setup testing else poop out
+      if(tokBox.onByDefault === true){
+        enableTokBox(tokBox.key);
+        showTokBox();
+      }
     }
-  }
-  else{
-    alert('Tokbox key not set...  Set the key in your settings.json file');
+    else{
+      alert('Tokbox key not set...  Set the key in your settings.json file');
+    }
   }
 }
 
@@ -15,7 +18,7 @@ function enableTokBox(key){
 }
 
 function showTokBox(){
-  enableTokBox(tokBox.key);
+  enableTokBox(clientVars.ep_tokbox.key);
   $("#editorcontainer").css({"right":"357px","width":"auto"});
   $("#tokbox").css({"z-index":"999999", "position":"absolute", "top":"0px"});
   $("#chatbox").attr("style", "width: 350px !important");
@@ -34,7 +37,6 @@ function hideTokBox(){
   $("#chatbox").attr("style", "width: 200px !important");
   $("#chatbox").removeClass("stickyChat");
   $("#chatbox").hide();
-
 }
 
 function toggleTokBox(){
