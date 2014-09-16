@@ -8,7 +8,9 @@
     "url": "John McLear"
   },
   "contributors": [],
-  "dependencies": {},
+  "dependencies": {
+    "opentok":">2.2.3"
+  },
   "engines": {
     "node": "*"
   },
