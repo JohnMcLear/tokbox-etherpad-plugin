@@ -47,10 +47,12 @@ function disableTokBox(){
 
 function enableTokBox(){
 
-  var apiKey = 21903532;
-  var sessionId = '1_MX4yMTkwMzUzMn5-VHVlIFNlcCAxNiAxMDo1NDoxNyBQRFQgMjAxNH4wLjgyMDc4MzJ-fg';
+  var apiKey = 'todo';
+  var sessionId = 'todo';
+
   tokbox.session = OT.initSession(apiKey, sessionId);
-  // request room token to join
+
+  // request room token to join, need to do server logic to handle this
 
   // Handle events
   tokbox.session.on({
@@ -60,7 +62,7 @@ function enableTokBox(){
   });
 
   // Join room
-  var token = 'T1==cGFydG5lcl9pZD0yMTkwMzUzMiZzaWc9NTk1YzBjOTk0NTY4N2UzZWQxOWNlNWMyNjJjMWE3YmI4ZDJjMWFiYjpyb2xlPXB1Ymxpc2hlciZzZXNzaW9uX2lkPTFfTVg0eU1Ua3dNelV6TW41LVZIVmxJRk5sY0NBeE5pQXhNRG8xTkRveE55QlFSRlFnTWpBeE5INHdMamd5TURjNE16Si1mZyZjcmVhdGVfdGltZT0xNDEwOTA4NjE1Jm5vbmNlPTAuNjUyNDAzOTg2NjAwMDQ4OA==';
+  var token = 'todo';
   tokbox.session.connect(token, function(error) {
     if (error) {
       console.log(error.message);
@@ -76,6 +78,7 @@ function showTokBox(){
   enableTokBox();
   $('#tokboxButton > a').css({"border-color":"red"});
   $("#tokbox").show();
+  $('<div>').attr({'id':'myPublisherDiv'}).appendTo($('#tokbox'));
   var right = $('#editorcontainer').css('right');
   right = right == 'auto' ? '0px' : right;
   $('#editorcontainer').css({"left":"130px", "width": "auto", "right": right});
