@@ -26,7 +26,7 @@ var postAceInit = function(hook, context){
 
   if(clientVars.ep_tokbox){
     tokBox = clientVars.ep_tokbox;
-    if(tokBox && tokBox.key){ // Setup testing else poop out
+    if(tokBox){ // Setup testing else poop out
       if(tokBox.onByDefault === true){
         enableTokBox();
         showTokBox();
@@ -47,8 +47,8 @@ function disableTokBox(){
 
 function enableTokBox(){
 
-  var apiKey = 'todo';
-  var sessionId = 'todo';
+  var apiKey = clientVars.ep_tokbox.key;
+  var sessionId = 'test';
 
   tokbox.session = OT.initSession(apiKey, sessionId);
 
@@ -62,7 +62,7 @@ function enableTokBox(){
   });
 
   // Join room
-  var token = 'todo';
+  var token = clientVars.ep_tokbox.token;
   tokbox.session.connect(token, function(error) {
     if (error) {
       console.log(error.message);
