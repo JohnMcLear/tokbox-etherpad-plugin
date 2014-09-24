@@ -1,14 +1,16 @@
 {
   "name": "ep_tokbox",
-  "description": "Video conferencing and video chat in your Etherpad Lite pads powered by tokbox -- IMPORTANT: Add the following to your settings.json file -- 'ep_tokbox':{'key':'YOUR TOKBOX KEY HERE','onByDefault':'false'}",
-  "version": "0.1.3",
+  "description": "Video conferencing and video chat in your Etherpad Lite pads powered by tokbox, see README.md for settings",
+  "version": "2.0.1",
   "author": {
     "name": "johnyma22",
     "email": "john@mclear.co.uk",
     "url": "John McLear"
   },
   "contributors": [],
-  "dependencies": {},
+  "dependencies": {
+    "opentok":">=2.2.4"
+  },
   "engines": {
     "node": "*"
   },
