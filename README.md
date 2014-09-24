@@ -1,4 +1,4 @@
-# Etherpad TokBox / OpenTok V2 implementation
+# Etherpad TokBox / OpenTok V2 plugin
 
 ![screen shot](http://i.imgur.com/ZbjzuwD.png)
 
