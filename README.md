@@ -1,5 +1,7 @@
 # Etherpad TokBox / OpenTok V2 implementation
 
+![screen shot](http://i.imgur.com/ZbjzuwD.png)
+
 This plugin puts cross browser WebRTC and Video chat into your Etherpad.
 
 # Installation
