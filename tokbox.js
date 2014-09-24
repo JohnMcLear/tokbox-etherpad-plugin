@@ -2,34 +2,30 @@ var eejs = require('ep_etherpad-lite/node/eejs/'),
 settings = require('ep_etherpad-lite/node/utils/Settings'),
  OpenTok = require('opentok');
 
-if(settings.ep_tokbox){
-  if(settings.ep_tokbox.key && settings.ep_tokbox.secret){
-    opentok = new OpenTok(settings.ep_tokbox.key, settings.ep_tokbox.secret);
-    opentok.createSession(function(err, session) {
-      if (err) throw err;
-      console.log("Congrats, Opentok ready to rock and roll", settings.ep_tokbox, opentok);
-    });
-  }
-}else{
-  console.error("No tokbox key or secret");
-}
-
 exports.eejsBlock_scripts = function (hook_name, args, cb) {
   args.content += "<script src='//static.opentok.com/webrtc/v2.2/js/opentok.min.js'></script>";
   return cb();
 }
 
 exports.clientVars = function(hook, context, callback){
-  console.log("opentok", opentok);
-  if(settings.ep_tokbox && settings.ep_tokbox.key){ // Setup testing else poop out
-    var tokBox = {};
-    tokBox.key = settings.ep_tokbox.key || false;
-    tokBox.token = opentok.generateToken("test");
-    tokBox.onByDefault = settings.ep_tokbox.onByDefault || false;
+  if(settings.ep_tokbox && settings.ep_tokbox.key && settings.ep_tokbox.secret){ // Setup testing else poop out
+
+    console.warn("Creating tokbox", settings.ep_tokbox);
+    opentok = new OpenTok(settings.ep_tokbox.key, settings.ep_tokbox.secret);
+    opentok.createSession(function(err, session) {
+      if (err) throw err;
+      console.warn("Congrats, Opentok ready to rock and roll with Session ID", session.sessionId);
+
+      var tokBox = {};
+      tokBox.key = settings.ep_tokbox.key || false;
+      tokBox.token = opentok.generateToken(session.sessionId);
+      tokBox.onByDefault = settings.ep_tokbox.onByDefault || false;
+      return callback({ep_tokbox: tokBox});
+    });
   }else{
-    console.error("ep_tokbox.key not set, set it in settings.json");
+    console.error("ep_tokbox.key or secreto not set, set it in settings.json");
+    return callback(null);
   }
-  return callback({ep_tokbox: tokBox});
 }
 
 exports.eejsBlock_editbarMenuRight = function (hook_name, args, cb){
