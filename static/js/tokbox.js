@@ -48,7 +48,7 @@ function disableTokBox(){
 function enableTokBox(){
 
   var apiKey = clientVars.ep_tokbox.key;
-  var sessionId = 'test';
+  var sessionId = clientVars.ep_tokbox.sessionId;
 
   tokbox.session = OT.initSession(apiKey, sessionId);
 

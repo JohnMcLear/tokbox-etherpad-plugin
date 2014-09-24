@@ -19,6 +19,7 @@ exports.clientVars = function(hook, context, callback){
       var tokBox = {};
       tokBox.key = settings.ep_tokbox.key || false;
       tokBox.token = opentok.generateToken(session.sessionId);
+      tokBox.sessionId = session.sessionId;
       tokBox.onByDefault = settings.ep_tokbox.onByDefault || false;
       return callback({ep_tokbox: tokBox});
     });
