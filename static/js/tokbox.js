@@ -57,7 +57,7 @@ function enableTokBox(){
   // Handle events
   tokbox.session.on({
     streamCreated: function(event) { 
-      tokbox.session.subscribe(event.stream, 'subscribersDiv', {insertMode: 'append'}); 
+      tokbox.session.subscribe(event.stream, 'subscribersDiv', {insertMode: 'append', width: 130, height: 100}); 
     }
   });
 
