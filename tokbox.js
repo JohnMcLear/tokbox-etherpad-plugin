@@ -1,6 +1,18 @@
-var eejs = require('ep_etherpad-lite/node/eejs/');
-var settings = require('ep_etherpad-lite/node/utils/Settings');
-var tokBoxString = "";
+var eejs = require('ep_etherpad-lite/node/eejs/'),
+settings = require('ep_etherpad-lite/node/utils/Settings'),
+ OpenTok = require('opentok');
+
+if(settings.ep_tokbox){
+  if(settings.ep_tokbox.key && settings.ep_tokbox.secret){
+    opentok = new OpenTok(settings.ep_tokbox.key, settings.ep_tokbox.secret);
+    opentok.createSession(function(err, session) {
+      if (err) throw err;
+      console.log("Congrats, Opentok ready to rock and roll", settings.ep_tokbox, opentok);
+    });
+  }
+}else{
+  console.error("No tokbox key or secret");
+}
 
 exports.eejsBlock_scripts = function (hook_name, args, cb) {
   args.content += "<script src='//static.opentok.com/webrtc/v2.2/js/opentok.min.js'></script>";
@@ -8,14 +20,15 @@ exports.eejsBlock_scripts = function (hook_name, args, cb) {
 }
 
 exports.clientVars = function(hook, context, callback){
+  console.log("opentok", opentok);
   if(settings.ep_tokbox && settings.ep_tokbox.key){ // Setup testing else poop out
     var tokBox = {};
     tokBox.key = settings.ep_tokbox.key || false;
+    tokBox.token = opentok.generateToken("test");
     tokBox.onByDefault = settings.ep_tokbox.onByDefault || false;
   }else{
     console.error("ep_tokbox.key not set, set it in settings.json");
   }
-  console.log("pushing ClientVars", tokBox);
   return callback({ep_tokbox: tokBox});
 }
 
