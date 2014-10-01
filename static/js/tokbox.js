@@ -37,15 +37,22 @@ var postAceInit = function(hook, context){
     }
   }
 
-  if(avInURL()) showTokBox();
+  if(avYesInURL()) showTokBox();
+  if(avNoInURL()){
+    $('#tokboxButton').hide();
+  }
 
 }
 
 function disableTokBox(){
+  tokbox.enabled = false;
   tokbox.session.disconnect();
 }
 
 function enableTokBox(){
+  if(tokbox.enabled) return false;
+
+  tokbox.enabled = true;
 
   var apiKey = clientVars.ep_tokbox.key;
   var sessionId = clientVars.ep_tokbox.sessionId;
@@ -100,13 +107,22 @@ function toggleTokBox(){
   }
 }
 
-function avInURL(){
+function avYesInURL(){
   if (window.location.search.indexOf('av=YES') > -1) {
     return true;
   } else {
     return false;
   }
 }
+
+function avNoInURL(){
+  if (window.location.search.indexOf('av=NO') > -1) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
 
 $(".tokboxButton").click(function(){ /* On click listener for tokbox button */
   toggleTokBox();
