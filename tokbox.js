@@ -49,9 +49,7 @@ exports.clientVars = function(hook, context, callback){
 
 exports.eejsBlock_editbarMenuRight = function (hook_name, args, cb){
   if(!settings.ep_tokbox.hideByDefault){
-    args.content = "<li id='tokboxButton' class='acl-write' data-key='tokbox'><a title='Video Conferencing'><span class='buttonicon tokboxButton' style='background-image:url(\"../static/plugins/ep_tokbox/static/img/icon.png\")'></span></a></li><li class='separator'></li>" + args.content;
-  }else{
-    args.conetnt = "";
+    args.content = eejs.require("ep_tokbox/templates/button.ejs") + args.content;
   }
   return cb();
 }
