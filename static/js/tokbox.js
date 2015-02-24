@@ -21,6 +21,25 @@ var postAceInit = function(hook, context){
     'display': 'none',
   }).appendTo($('body'));
 
+  $('#tokbox').attr("title", "Click to double size of Video");
+
+  $('#tokbox').on("click", function(){
+    if(!window.tokbox.width || window.tokbox.width == 130){
+      window.tokbox.width = 260;
+      $('#tokbox').css("width", "260px");
+      var right = $('#editorcontainer').css('right');
+      right = right == 'auto' ? '0px' : right;
+      $('#editorcontainer').css({"left":"260px", "width": "auto", "right": right});
+    }else{
+      window.tokbox.width = 130;
+      $('#tokbox').css("width", "130px");
+      var right = $('#editorcontainer').css('right');
+      right = right == 'auto' ? '0px' : right;
+      $('#editorcontainer').css({"left":"130px", "width": "auto", "right": right});
+    }
+    $('.OT_mini, .OT_root').css({"width":window.tokbox.width +"px", "height": window.tokbox.width+"px"});
+  });
+
   $('<div>').attr({'id':'myPublisherDiv'}).appendTo($('#tokbox'));
   $('<div>').attr({'id':'subscribersDiv'}).appendTo($('#tokbox'));
 
