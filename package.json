@@ -1,7 +1,7 @@
 {
   "name": "ep_tokbox",
   "description": "Video conferencing and video chat in your Etherpad Lite pads powered by tokbox, see README.md for settings",
-  "version": "2.0.4",
+  "version": "2.0.5",
   "author": {
     "name": "johnyma22",
     "email": "john@mclear.co.uk",

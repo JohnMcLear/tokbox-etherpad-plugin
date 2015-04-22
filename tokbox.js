@@ -36,7 +36,10 @@ exports.clientVars = function(hook, context, callback){
   // Session does not exist, creating one.
   var opentok = new OpenTok(settings.ep_tokbox.key, settings.ep_tokbox.secret);
   opentok.createSession(function(err, session) {
-    if (err) throw err;
+    if (err){
+      console.warn("Tokbox error", err);
+      return callback();
+    }
     tokBox.token = opentok.generateToken(session.sessionId);
     // We should map sessionId to padId
     tokBox.sessionId = session.sessionId;
