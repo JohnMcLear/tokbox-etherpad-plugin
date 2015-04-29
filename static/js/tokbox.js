@@ -21,7 +21,7 @@ var postAceInit = function(hook, context){
     'display': 'none',
   }).appendTo($('body'));
 
-
+  $('#tokbox').unbind("click"); // postAceInit might fire multiple times, we should only handle the click event once.
   $('#tokbox').on("click", function(){
     if(!window.tokbox.width || window.tokbox.width == 130){
       // Make tokbox big.
@@ -110,7 +110,10 @@ function showTokBox(){
   $('<div>').attr({'id':'myPublisherDiv'}).appendTo($('#tokbox'));
   var right = $('#editorcontainer').css('right');
   right = right == 'auto' ? '0px' : right;
-  $('#editorcontainer').css({"left":"130px", "width": "auto", "right": right});
+  // If the video has been resized we always ensure the contents are displayed
+  // properly after
+  var videoWidth = $('#tokbox').width() + "px" || "130px"; 
+  $('#editorcontainer').css({"left":videoWidth, "width": "auto", "right": right});
 }
 
 function hideTokBox(){
