@@ -92,14 +92,17 @@ function enableTokBox(){
 
   // Join room
   var token = clientVars.ep_tokbox.token;
-  tokbox.session.connect(token, function(error) {
-    if (error) {
-      console.log(error.message);
-    } else {
-      console.log('connected to session');
-      tokbox.session.publish('myPublisherDiv', {width: 130, height: 100});
-    }
-  });
+  if(!tokbox.session.connect){
+    console.log("still dooing it");
+    tokbox.session.connect(token, function(error) {
+      if (error) {
+        console.log(error.message);
+      } else {
+        console.log('connected to session');
+        tokbox.session.publish('myPublisherDiv', {width: 130, height: 100});
+      }
+    });
+  }
 
 }
 
