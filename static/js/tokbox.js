@@ -92,8 +92,7 @@ function enableTokBox(){
 
   // Join room
   var token = clientVars.ep_tokbox.token;
-  if(!tokbox.session.connect){
-    console.log("still dooing it");
+  if(tokbox.session.connect){
     tokbox.session.connect(token, function(error) {
       if (error) {
         console.log(error.message);
