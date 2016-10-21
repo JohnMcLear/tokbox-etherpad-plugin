@@ -38,7 +38,7 @@ exports.clientVars = function(hook, context, callback){
   opentok.createSession(function(err, session) {
     if (err){
       console.warn("Tokbox error", err);
-      return callback({ep_tokbox: false});
+      return callback(null);
     }
     tokBox.token = opentok.generateToken(session.sessionId);
     // We should map sessionId to padId
